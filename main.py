@@ -1,11 +1,14 @@
 import telebot
 import time
 import requests
+from dotenv import load_dotenv
+import os
 
-BOT_TOKEN = '6581797741:AAGBiA9z1s_qh_3qBCZH7m_CuGlbhx3N6lM'
-WEATHER_API = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid=a57925d395bac1fd44567afaad416712'
+load_dotenv()
 
-bot = telebot.TeleBot(BOT_TOKEN, parse_mode=None)
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+
+bot = telebot.TeleBot(BOT_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def say_hello(message):
